@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Comfortaa", sans-serif;
+  color: #111827;
+}
+
+.back-main {
+    background-color: #111827;
+}
