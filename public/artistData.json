@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "John Smith",
+    "image": "https://i.ibb.co/DgdHYCS/Moses-Haughton-Jr-Portrait-of-John-Smith-1781-1855.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Emily Johnson",
+    "image": "https://i.ibb.co/61PyDdM/pexels-photo-3831622.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Michael Brown",
+    "image": "https://i.ibb.co/23G34HQ/pexels-photo-2379004.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Sophia Wilson",
+    "image": "https://i.ibb.co/xf2hrMf/pexels-photo-1181686.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Daniel Martinez",
+    "image": "https://i.ibb.co/Fq2snsL/pexels-photo-7322203.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Olivia Garcia",
+    "image": "https://i.ibb.co/9WyG8Mr/pexels-photo-1181689.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Ella Thompson",
+    "image": "https://i.ibb.co/WpxFjpQ/pexels-photo-13708279.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Liam Rodriguez",
+    "image": "https://i.ibb.co/jhJxGPn/free-photo-of-studio-shot-of-a-young-man-with-long-curly-hair-and-a-black-t-shirt.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Ava Martinez",
+    "image": "https://i.ibb.co/9NYQxc8/free-photo-of-portrait-of-a-young-handsome-man.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Noah Wilson",
+    "image": "https://i.ibb.co/74xR5cL/free-photo-of-studio-shot-of-a-young-man-smiling.jpg"
+  }
+]

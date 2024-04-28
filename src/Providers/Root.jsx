@@ -5,8 +5,10 @@ import Navbar from "../Shared/Navbar";
 const Root = () => {
   return (
     <div>
-      <Navbar></Navbar>
-      <Outlet></Outlet>
+      <div className="container mx-auto">
+        <Navbar></Navbar>
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );
