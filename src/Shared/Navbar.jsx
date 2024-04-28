@@ -12,9 +12,8 @@ const Navbar = () => {
   const handleToggle = (e) => {
     if (e.target.checked) {
       setTheme("dark");
-    }
-    else {
-      setTheme("light")
+    } else {
+      setTheme("light");
     }
   };
 
@@ -45,13 +44,24 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[20] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
               <Link to="/">Home</Link>
             </li>
+            {!user && (
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+            )}
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/allItems">All Items</Link>
+            </li>
+            <li>
+              <Link to="/addItem">Add Craft Item</Link>
+            </li>
+            <li>
+              <Link to="/myList">My List</Link>
             </li>
           </ul>
         </div>
