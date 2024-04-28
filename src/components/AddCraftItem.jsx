@@ -60,13 +60,17 @@ const AddCraftItem = () => {
                     Subcategory Name
                   </span>
                 </label>
-                <input
-                  type="text"
-                  name="subname"
-                  placeholder="Subcategory Name"
-                  className="input input-bordered rounded-none text-sm"
-                  required
-                />
+                <select className="select select-bordered rounded-none w-full">
+                  <option disabled selected>
+                    Select One
+                  </option>
+                  <option>Landscape Painting</option>
+                  <option>Portrait Drawing</option>
+                  <option>Watercolour Painting</option>
+                  <option>Oil Painting</option>
+                  <option>Charcoal Sketching</option>
+                  <option>Cartoon Drawing</option>
+                </select>
               </div>
               {/* Short Description */}
               <div className="form-control col-span-2">

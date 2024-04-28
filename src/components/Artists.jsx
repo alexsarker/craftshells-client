@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const Artists = () => {
   const [artistList, setArtistList] = useState([]);
+  const [displayCount, setDisplayCount] = useState(4);
 
   useEffect(() => {
     const fetchArtistData = async () => {
@@ -17,6 +18,10 @@ const Artists = () => {
     fetchArtistData();
   }, []);
 
+  const handleViewAll = () => {
+    setDisplayCount(artistList.length);
+  };
+
   return (
     <div className="my-24">
       <div className="text-center pb-16">
@@ -27,9 +32,13 @@ const Artists = () => {
       </div>
       <div className="flex justify-center">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {artistList.map((artist) => (
+          {artistList.slice(0, displayCount).map((artist) => (
             <div key={artist.id} className="text-center">
-              <img src={artist.image} className="h-96 w-full" />
+              <img
+                src={artist.image}
+                className="h-96 w-full"
+                alt={artist.name}
+              />
               <h4 className="text-base font-medium py-3">{artist.name}</h4>
               <button className="hover:btn-ghost px-4 py-2 back-main text-white rounded-none">
                 Follow
@@ -38,6 +47,13 @@ const Artists = () => {
           ))}
         </div>
       </div>
+      {displayCount < artistList.length && (
+        <div className="flex justify-center">
+          <button className="btn btn-outline my-10" onClick={handleViewAll}>
+            View All
+          </button>
+        </div>
+      )}
     </div>
   );
 };
