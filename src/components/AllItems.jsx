@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
+import Lottie from "lottie-react";
+import FightingShapeLoader from "../box.json";
 
 
 const AllItems = () => {
@@ -7,8 +9,10 @@ const AllItems = () => {
     if (loading) {
       return (
         <div className="flex justify-center my-24">
-          <span className="loading loading-infinity loading-lg"></span>
+        <div className="w-96 mx-auto">
+          <Lottie animationData={FightingShapeLoader} />
         </div>
+      </div>
       );
     }
     return (

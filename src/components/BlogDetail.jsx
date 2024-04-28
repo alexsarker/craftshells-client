@@ -1,11 +1,25 @@
 import PropTypes from "prop-types";
 import { Link, useLoaderData, useParams } from "react-router-dom";
+import Lottie from "lottie-react";
+import FightingShapeLoader from "../box.json";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const BlogDetail = () => {
+  const { loading } = useContext(AuthContext);
   const blogs = useLoaderData();
   const { id } = useParams();
   const parseId = parseInt(id);
   const blog = blogs.find((blog) => blog.id === parseId);
+  if (loading) {
+    return (
+      <div className="flex justify-center my-24">
+        <div className="w-96 mx-auto">
+          <Lottie animationData={FightingShapeLoader} />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-100 p-10 mb-24">
