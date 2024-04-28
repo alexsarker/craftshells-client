@@ -29,7 +29,7 @@ const BlogDetail = () => {
         src={blog?.image}
         alt="Image"
       />
-      <h2 className="text-3xl font-bold pt-2 pb-3">{blog?.header}</h2>
+      <h2 className="text-3xl font-bold pt-2 pb-3 text-[#6B7280]">{blog?.header}</h2>
       <h2 className="text-xl font-bold pb-6 italic text-secondary">
         {blog?.writer}
       </h2>

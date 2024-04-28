@@ -1,12 +1,28 @@
-import { useContext } from "react";
-import { MdOutlineDarkMode } from "react-icons/md";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Tooltip } from "react-tooltip";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  );
 
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("dark");
+    }
+    else {
+      setTheme("light")
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
   return (
     <div className="navbar bg-base-100 my-4">
       <div className="navbar-start">
@@ -80,14 +96,14 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-        {/* dark theme */}
+        {/* theme */}
         <div className="mr-6">
           <label className="swap swap-rotate">
-            {/* this hidden checkbox controls the state */}
             <input
               type="checkbox"
               className="theme-controller"
               value="synthwave"
+              onChange={handleToggle}
             />
 
             {/* sun icon */}
