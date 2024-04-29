@@ -42,7 +42,7 @@ const CraftItem = () => {
         <hr className="w-48 mx-auto border-2 border-[#595D62]" />
       </div>
       <div className="flex justify-center">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {craftList.slice(0, displayCount).map((craft) => (
             <div key={craft._id}>
               <img src={craft?.photoURL} className="h-96 w-full" />
