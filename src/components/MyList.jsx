@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+
 const MyList = () => {
   const [craftList, setCraftList] = useState([]);
+  const [selectedCustomization, setSelectedCustomization] = useState("All"); // Set default value to "All"
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -19,6 +20,17 @@ const MyList = () => {
     fetchCraftData();
   }, []);
 
+  const handleCustomizationChange = (event) => {
+    setSelectedCustomization(event.target.value);
+  };
+
+  const filteredCraftList =
+    selectedCustomization === "All"
+      ? craftList
+      : craftList.filter(
+          (craft) => craft.customization === selectedCustomization
+        );
+
   return (
     <div className="my-24">
       <div className="text-center pb-16">
@@ -26,17 +38,40 @@ const MyList = () => {
           Craft Items
         </h2>
         <hr className="w-48 mx-auto border-2 border-[#595D62]" />
+
+        {/* customization button */}
+        <label className="form-control w-full">
+          <div className="label">
+            <span className="label-text">Sort by Customization</span>
+          </div>
+          <select
+            className="select select-bordered"
+            value={selectedCustomization}
+            onChange={handleCustomizationChange}
+          >
+            <option value="All">All</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
       </div>
       <div className="flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-          {craftList.map((craft) => (
+          {filteredCraftList.map((craft) => (
             <div key={craft._id} className="pb-6">
               {user.email === craft.userEmail && (
                 <div>
-                  <img src={craft?.photoURL} className="h-96 w-full" />
+                  <img
+                    src={craft?.photoURL}
+                    className="h-96 w-full"
+                    alt="Craft item"
+                  />
                   <h4 className="font-bold py-3">{craft?.name}</h4>
                   <p className="text-[#595D62] font-light pb-2">
                     Category: {craft.subcategory}
+                  </p>
+                  <p className="text-[#595D62] font-light pb-2">
+                    Customization: {craft.customization}
                   </p>
                   <p className="text-secondary text-xl pb-4">${craft?.price}</p>
                   <div className="flex justify-between">
