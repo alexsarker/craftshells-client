@@ -55,7 +55,7 @@ const Navbar = () => {
               </li>
             )}
             <li>
-              <Link to="/allItems">All Items</Link>
+              <Link to="/allCraftItems">All Craft Items</Link>
             </li>
             <li>
               <Link to="/addItem">Add Craft Item</Link>
@@ -79,10 +79,10 @@ const Navbar = () => {
             Home
           </Link>
           <Link
-            to="/allItems"
+            to="/allCraftItems"
             className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-12"
           >
-            All Items
+            All Craft Items
           </Link>
           <Link
             to="/addItem"

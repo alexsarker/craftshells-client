@@ -11,8 +11,8 @@ import BlogDetail from "./components/BlogDetail";
 import Artists from "./components/Artists";
 import AuthProvider from "./Providers/AuthProvider";
 import AddCraftItem from "./components/AddCraftItem";
+import AllCraftItems from "./components/AllCraftItems";
 import MyList from "./components/MyList";
-import AllItems from "./components/AllItems";
 import PrivateRoute from "./Providers/PrivateRoute";
 import CraftDetail from "./components/CraftDetail";
 
@@ -62,8 +62,9 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/allItems",
-        element: <AllItems />,
+        path: "/allCraftItems",
+        element: <AllCraftItems />,
+        loader: () => fetch("http://localhost:5000/craft"),
       },
       {
         path: "/craft/:id",
