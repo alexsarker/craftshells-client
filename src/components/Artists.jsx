@@ -34,11 +34,7 @@ const Artists = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {artistList.slice(0, displayCount).map((artist) => (
             <div key={artist.id} className="text-center">
-              <img
-                src={artist.image}
-                className="h-96 w-full"
-                alt={artist.name}
-              />
+              <img src={artist.image} className="h-96 w-full" alt={artist.name} />
               <h4 className="text-base font-medium py-3">{artist.name}</h4>
               <button className="hover:btn-ghost px-4 py-2 back-main text-white rounded-none">
                 Follow

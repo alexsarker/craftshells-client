@@ -6,6 +6,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Lottie from "lottie-react";
 import FightingShapeLoader from "../box.json";
+import CraftItem from "./CraftItem";
 
 const Home = () => {
   const blogList = useLoaderData();
@@ -110,6 +111,9 @@ const Home = () => {
       </div>
 
       {/* section 2 */}
+      <CraftItem></CraftItem>
+
+      {/* section 3 */}
       <div className="my-24">
         <div className="text-center pb-16">
           <h2 className="text-2xl font-bold text-[#595D62] uppercase pb-2">
@@ -186,7 +190,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* section 3 */}
+      {/* section 4 */}
       <div className="my-24">
         <div className="text-center pb-16">
           <h2 className="text-2xl font-bold text-[#595D62] pb-2">BLOGS</h2>
@@ -222,7 +226,7 @@ const Home = () => {
         )}
       </div>
 
-      {/* section 4 */}
+      {/* section 5 */}
       <Artists></Artists>
     </div>
   );

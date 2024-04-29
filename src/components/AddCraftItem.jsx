@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Lottie from "lottie-react";
 import FightingShapeLoader from "../box.json";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddCraftItem = () => {
   const { loading } = useContext(AuthContext);
@@ -14,6 +15,56 @@ const AddCraftItem = () => {
       </div>
     );
   }
+
+  const handleAddCraft = (e) => {
+    e.preventDefault();
+    const form = e.target;
+
+    const photoURL = form.photoURL.value;
+    const name = form.name.value;
+    const subcategory = form.subcategory.value;
+    const description = form.description.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const customization = form.customization.value;
+    const processingTime = form.processingTime.value;
+    const stockStatus = form.stockStatus.value;
+    const artistName = form.artistName.value;
+    const artistEmail = form.artistEmail.value;
+
+    const newCraft = {
+      photoURL,
+      name,
+      subcategory,
+      description,
+      price,
+      rating,
+      customization,
+      processingTime,
+      stockStatus,
+      artistName,
+      artistEmail,
+    };
+    console.log(newCraft);
+
+    // send data to the server
+    fetch("http://localhost:5000/craft", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCraft),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          toast.success("Added Successfully");
+          form.reset();
+        }
+      });
+  };
+
   return (
     <div>
       <div className="hero pt-10 pb-24 lg:pb-56">
@@ -22,7 +73,7 @@ const AddCraftItem = () => {
             <h1 className="text-4xl font-medium pb-4">Add Craft Item</h1>
           </div>
           <div className="card ">
-            <form className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleAddCraft} className="grid grid-cols-2 gap-4">
               {/* Image URL */}
               <div className="form-control">
                 <label className="label">
@@ -60,16 +111,22 @@ const AddCraftItem = () => {
                     Subcategory Name
                   </span>
                 </label>
-                <select className="select select-bordered rounded-none w-full">
-                  <option disabled selected>
+                <select
+                  name="subcategory"
+                  className="select select-bordered rounded-none w-full"
+                  required
+                >
+                  <option disabled defaultValue="" hidden>
                     Select One
                   </option>
-                  <option>Landscape Painting</option>
-                  <option>Portrait Drawing</option>
-                  <option>Watercolour Painting</option>
-                  <option>Oil Painting</option>
-                  <option>Charcoal Sketching</option>
-                  <option>Cartoon Drawing</option>
+                  <option value="Landscape Painting">Landscape Painting</option>
+                  <option value="Portrait Drawing">Portrait Drawing</option>
+                  <option value="Watercolour Painting">
+                    Watercolour Painting
+                  </option>
+                  <option value="Oil Painting">Oil Painting</option>
+                  <option value="Charcoal Sketching">Charcoal Sketching</option>
+                  <option value="Cartoon Drawing">Cartoon Drawing</option>
                 </select>
               </div>
               {/* Short Description */}
@@ -112,7 +169,7 @@ const AddCraftItem = () => {
                 <input
                   type="text"
                   name="rating"
-                  placeholder="0.0"
+                  placeholder="Out of 5"
                   className="input input-bordered rounded-none text-sm"
                   required
                 />
@@ -124,12 +181,16 @@ const AddCraftItem = () => {
                     Customization
                   </span>
                 </label>
-                <select className="select select-bordered rounded-none w-full">
-                  <option disabled selected>
+                <select
+                  name="customization"
+                  className="select select-bordered rounded-none w-full"
+                  required
+                >
+                  <option disabled defaultValue="" hidden>
                     Select One
                   </option>
-                  <option>Yes</option>
-                  <option>No</option>
+                  <option value="Yes">Yes</option>
+                  <option value="No">No</option>
                 </select>
               </div>
               {/* Processing Time */}
@@ -140,7 +201,7 @@ const AddCraftItem = () => {
                   </span>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   name="processingTime"
                   placeholder="Processing Time"
                   className="input input-bordered rounded-none text-sm"
@@ -154,25 +215,29 @@ const AddCraftItem = () => {
                     Stock Status
                   </span>
                 </label>
-                <select className="select select-bordered rounded-none w-full">
-                  <option disabled selected>
+                <select
+                  name="stockStatus"
+                  className="select select-bordered rounded-none w-full"
+                  required
+                >
+                  <option disabled defaultValue="" hidden>
                     Select One
                   </option>
-                  <option>In Stock</option>
-                  <option>Made to Order</option>
+                  <option value="In Stock">In Stock</option>
+                  <option value="Made to Order">Made to Order</option>
                 </select>
               </div>
               {/* User Name */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-medium text-base">
-                    User Name
+                    Artist Name
                   </span>
                 </label>
                 <input
                   type="text"
-                  name="username"
-                  placeholder="User Name"
+                  name="artistName"
+                  placeholder="Artist Name"
                   className="input input-bordered rounded-none text-sm"
                   required
                 />
@@ -181,13 +246,13 @@ const AddCraftItem = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text font-medium text-base">
-                    User Email
+                    Artist Email
                   </span>
                 </label>
                 <input
                   type="email"
-                  name="userEmail"
-                  placeholder="User Email"
+                  name="artistEmail"
+                  placeholder="Artist Email"
                   className="input input-bordered rounded-none text-sm"
                   required
                 />
@@ -195,13 +260,18 @@ const AddCraftItem = () => {
 
               {/* button */}
               <div className="form-control mt-6 col-span-2">
-                <button className="btn back-main text-white rounded-none hover:bg-[#6A9093]">
-                  Add Item
-                </button>
+                <input
+                  type="submit"
+                  value="Add Item"
+                  className="btn back-main text-white rounded-none hover:bg-[#6A9093]"
+                />
               </div>
             </form>
           </div>
         </div>
+      </div>
+      <div>
+        <Toaster position="top-right" reverseOrder={false} />
       </div>
     </div>
   );
