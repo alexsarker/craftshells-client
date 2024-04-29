@@ -45,14 +45,14 @@ const CraftItem = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {craftList.slice(0, displayCount).map((craft) => (
             <div key={craft._id}>
-              <img src={craft.photoURL} className="h-96 w-full" />
-              <h4 className="font-bold py-3">{craft.name}</h4>
+              <img src={craft?.photoURL} className="h-96 w-full" />
+              <h4 className="font-bold py-3">{craft?.name}</h4>
               <p className="text-[#595D62] font-light pb-2">
                 Category: {craft.subcategory}
               </p>
-              <p className="text-secondary text-xl pb-4">${craft.price}</p>
+              <p className="text-secondary text-xl pb-4">${craft?.price}</p>
               <Link
-                to={`/craft/${craft._id}`}
+                to={`/craft/${craft?._id}`}
                 className="hover:btn-ghost px-4 py-3 back-main text-white rounded-none"
               >
                 View Details

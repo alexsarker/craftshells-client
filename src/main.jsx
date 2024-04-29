@@ -14,6 +14,7 @@ import AddCraftItem from "./components/AddCraftItem";
 import MyList from "./components/MyList";
 import AllItems from "./components/AllItems";
 import PrivateRoute from "./Providers/PrivateRoute";
+import CraftDetail from "./components/CraftDetail";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,15 @@ const router = createBrowserRouter([
       {
         path: "/allItems",
         element: <AllItems />,
+      },
+      {
+        path: "/craft/:id",
+        element: (
+          <PrivateRoute>
+            <CraftDetail />
+          </PrivateRoute>
+        ),
+        loader: () => fetch("http://localhost:5000/craft"),
       },
     ],
   },
