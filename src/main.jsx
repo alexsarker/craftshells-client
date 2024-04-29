@@ -15,6 +15,12 @@ import AllCraftItems from "./components/AllCraftItems";
 import MyList from "./components/MyList";
 import PrivateRoute from "./Providers/PrivateRoute";
 import CraftDetail from "./components/CraftDetail";
+import LandscapePainting from "./components/Categories/LandscapePainting";
+import PortraitDrawing from "./components/Categories/PortraitDrawing";
+import WatercolourPainting from "./components/Categories/WatercolourPainting";
+import OilPainting from "./components/Categories/OilPainting";
+import CharcoalSketching from "./components/Categories/CharcoalSketching";
+import CartoonDrawing from "./components/Categories/CartoonDrawing";
 
 const router = createBrowserRouter([
   {
@@ -73,6 +79,38 @@ const router = createBrowserRouter([
             <CraftDetail />
           </PrivateRoute>
         ),
+        loader: () => fetch("http://localhost:5000/craft"),
+      },
+
+      // Categories ----------------------->
+      {
+        path: "/category/landscapePainting",
+        element: <LandscapePainting />,
+        loader: () => fetch("http://localhost:5000/craft"),
+      },
+      {
+        path: "/category/portraitDrawing",
+        element: <PortraitDrawing />,
+        loader: () => fetch("http://localhost:5000/craft"),
+      },
+      {
+        path: "/category/watercolourPainting",
+        element: <WatercolourPainting />,
+        loader: () => fetch("http://localhost:5000/craft"),
+      },
+      {
+        path: "/category/oilPainting",
+        element: <OilPainting />,
+        loader: () => fetch("http://localhost:5000/craft"),
+      },
+      {
+        path: "/category/charcoalSketching",
+        element: <CharcoalSketching />,
+        loader: () => fetch("http://localhost:5000/craft"),
+      },
+      {
+        path: "/category/cartoonDrawing",
+        element: <CartoonDrawing />,
         loader: () => fetch("http://localhost:5000/craft"),
       },
     ],

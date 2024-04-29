@@ -4,7 +4,7 @@ import { Toaster } from "react-hot-toast";
 
 const MyList = () => {
   const [craftList, setCraftList] = useState([]);
-  const [selectedCustomization, setSelectedCustomization] = useState("All"); // Set default value to "All"
+  const [selectedCustomization, setSelectedCustomization] = useState("All");
   const { user } = useContext(AuthContext);
 
   useEffect(() => {

@@ -52,7 +52,7 @@ const AllCraftItems = () => {
                 </td>
                 <td className="font-bold text-xl">{craft.name}</td>
                 <td className="text-xl">{craft.subcategory}</td>
-                <td className="text-xl">${craft.price}</td>
+                <td className="text-xl text-secondary font-bold">${craft.price}</td>
                 <td>
                   <Link
                     to={`/craft/${craft?._id}`}
