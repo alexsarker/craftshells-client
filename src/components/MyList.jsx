@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 const MyList = () => {
   const [craftList, setCraftList] = useState([]);
-  const [displayCount, setDisplayCount] = useState(5);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchCraftData = async () => {
@@ -18,10 +19,6 @@ const MyList = () => {
     fetchCraftData();
   }, []);
 
-  const handleViewAll = () => {
-    setDisplayCount(craftList.length);
-  };
-  console.log(craftList);
   return (
     <div className="my-24">
       <div className="text-center pb-16">
@@ -32,36 +29,33 @@ const MyList = () => {
       </div>
       <div className="flex justify-center">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
-          {craftList.slice(0, displayCount).map((craft) => (
+          {craftList.map((craft) => (
             <div key={craft._id} className="pb-6">
-              <img src={craft?.photoURL} className="h-96 w-full" />
-              <h4 className="font-bold py-3">{craft?.name}</h4>
-              <p className="text-[#595D62] font-light pb-2">
-                Category: {craft.subcategory}
-              </p>
-              <p className="text-secondary text-xl pb-4">${craft?.price}</p>
-              <div className="flex justify-between">
-                <Link
-                  to={`/craft/${craft?._id}`}
-                  className="hover:btn-ghost px-10 py-2 back-main text-white rounded-none"
-                >
-                  Update
-                </Link>
-                <Link className="hover:btn-ghost px-10 py-2 bg-[#D33030] text-white rounded-none">
-                  Delete
-                </Link>
-              </div>
+              {user.email === craft.userEmail && (
+                <div>
+                  <img src={craft?.photoURL} className="h-96 w-full" />
+                  <h4 className="font-bold py-3">{craft?.name}</h4>
+                  <p className="text-[#595D62] font-light pb-2">
+                    Category: {craft.subcategory}
+                  </p>
+                  <p className="text-secondary text-xl pb-4">${craft?.price}</p>
+                  <div className="flex justify-between">
+                    <Link
+                      to={`/craft/${craft?._id}`}
+                      className="hover:btn-ghost px-10 py-2 back-main text-white rounded-none"
+                    >
+                      Update
+                    </Link>
+                    <Link className="hover:btn-ghost px-10 py-2 bg-[#D33030] text-white rounded-none">
+                      Delete
+                    </Link>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
       </div>
-      {displayCount < craftList.length && (
-        <div className="flex justify-center">
-          <button className="btn btn-outline my-10" onClick={handleViewAll}>
-            View All
-          </button>
-        </div>
-      )}
     </div>
   );
 };

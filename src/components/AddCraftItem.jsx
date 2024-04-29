@@ -1,20 +1,9 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import Lottie from "lottie-react";
-import FightingShapeLoader from "../box.json";
 import toast, { Toaster } from "react-hot-toast";
 
 const AddCraftItem = () => {
-  const { loading } = useContext(AuthContext);
-  if (loading) {
-    return (
-      <div className="flex justify-center my-24">
-        <div className="w-96 mx-auto">
-          <Lottie animationData={FightingShapeLoader} />
-        </div>
-      </div>
-    );
-  }
+  const { user } = useContext(AuthContext);
 
   const handleAddCraft = (e) => {
     e.preventDefault();
@@ -31,6 +20,9 @@ const AddCraftItem = () => {
     const stockStatus = form.stockStatus.value;
     const artistName = form.artistName.value;
     const artistEmail = form.artistEmail.value;
+    const userEmail = user.email;
+
+    console.log(userEmail);
 
     const newCraft = {
       photoURL,
@@ -44,6 +36,7 @@ const AddCraftItem = () => {
       stockStatus,
       artistName,
       artistEmail,
+      userEmail,
     };
     console.log(newCraft);
 
