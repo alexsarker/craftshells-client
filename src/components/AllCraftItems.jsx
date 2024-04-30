@@ -8,8 +8,6 @@ const AllCraftItems = () => {
   const { loading } = useContext(AuthContext);
   const craftList = useLoaderData();
 
-  console.log(craftList);
-
   if (loading) {
     return (
       <div className="flex justify-center my-24">

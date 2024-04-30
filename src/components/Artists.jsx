@@ -7,7 +7,7 @@ const Artists = () => {
   useEffect(() => {
     const fetchArtistData = async () => {
       try {
-        const response = await fetch("artistData.json");
+        const response = await fetch("http://localhost:5000/artist");
         const data = await response.json();
         setArtistList(data);
       } catch (error) {

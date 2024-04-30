@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProvider";
 import toast, { Toaster } from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
-const AddCraftItem = () => {
-  const { user } = useContext(AuthContext);
+const UpdateCraft = () => {
+  const craft = useLoaderData();
 
-  const handleAddCraft = (e) => {
+  const handleUpdateCraft = (e) => {
     e.preventDefault();
     const form = e.target;
 
@@ -20,9 +19,8 @@ const AddCraftItem = () => {
     const stockStatus = form.stockStatus.value;
     const artistName = form.artistName.value;
     const artistEmail = form.artistEmail.value;
-    const userEmail = user.email;
 
-    const newCraft = {
+    const updateCraft = {
       photoURL,
       name,
       subcategory,
@@ -34,37 +32,37 @@ const AddCraftItem = () => {
       stockStatus,
       artistName,
       artistEmail,
-      userEmail,
     };
-    console.log(newCraft);
+    console.log(updateCraft);
 
-    // send data to the server
-    fetch("http://localhost:5000/craft", {
-      method: "POST",
+    fetch(`http://localhost:5000/craft/${craft._id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newCraft),
+      body: JSON.stringify(updateCraft),
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
-          toast.success("Added Successfully");
+        if (data.modifiedCount > 0) {
+          toast.success("Updated Successfully");
           form.reset();
         }
       });
   };
-
   return (
     <div>
       <div className="hero pt-10 pb-24 lg:pb-56">
         <div className="py-12 px-16 border">
           <div className="text-left pb-8">
-            <h1 className="text-4xl font-medium pb-4">Add Craft Item</h1>
+            <h1 className="text-4xl font-medium pb-4">Update</h1>
           </div>
           <div className="card ">
-            <form onSubmit={handleAddCraft} className="grid grid-cols-2 gap-4">
+            <form
+              onSubmit={handleUpdateCraft}
+              className="grid grid-cols-2 gap-4"
+            >
               {/* Image URL */}
               <div className="form-control">
                 <label className="label">
@@ -77,6 +75,7 @@ const AddCraftItem = () => {
                   name="photoURL"
                   placeholder="https://"
                   className="input input-bordered rounded-none text-sm"
+                  defaultValue={craft.photoURL}
                   required
                 />
               </div>
@@ -92,6 +91,7 @@ const AddCraftItem = () => {
                   name="name"
                   placeholder="Item Name"
                   className="input input-bordered rounded-none text-sm"
+                  defaultValue={craft.name}
                   required
                 />
               </div>
@@ -105,9 +105,10 @@ const AddCraftItem = () => {
                 <select
                   name="subcategory"
                   className="select select-bordered rounded-none w-full"
+                  defaultValue={craft.subcategory}
                   required
                 >
-                  <option disabled defaultValue="" hidden>
+                  <option disabled hidden>
                     Select One
                   </option>
                   <option value="Landscape Painting">Landscape Painting</option>
@@ -132,6 +133,7 @@ const AddCraftItem = () => {
                   name="description"
                   placeholder="Short Description"
                   className="text-area h-24 input input-bordered rounded-none text-sm pt-2"
+                  defaultValue={craft.description}
                   required
                 />
               </div>
@@ -147,6 +149,7 @@ const AddCraftItem = () => {
                   name="price"
                   placeholder="$$"
                   className="input input-bordered rounded-none text-sm"
+                  defaultValue={craft.price}
                   required
                 />
               </div>
@@ -162,6 +165,7 @@ const AddCraftItem = () => {
                   name="rating"
                   placeholder="Out of 5"
                   className="input input-bordered rounded-none text-sm"
+                  defaultValue={craft.rating}
                   required
                 />
               </div>
@@ -175,9 +179,10 @@ const AddCraftItem = () => {
                 <select
                   name="customization"
                   className="select select-bordered rounded-none w-full"
+                  defaultValue={craft.customization}
                   required
                 >
-                  <option disabled defaultValue="" hidden>
+                  <option disabled hidden>
                     Select One
                   </option>
                   <option value="Yes">Yes</option>
@@ -196,6 +201,7 @@ const AddCraftItem = () => {
                   name="processingTime"
                   placeholder="Processing Time"
                   className="input input-bordered rounded-none text-sm"
+                  defaultValue={craft.processingTime}
                   required
                 />
               </div>
@@ -209,9 +215,10 @@ const AddCraftItem = () => {
                 <select
                   name="stockStatus"
                   className="select select-bordered rounded-none w-full"
+                  defaultValue={craft.stockStatus}
                   required
                 >
-                  <option disabled defaultValue="" hidden>
+                  <option disabled hidden>
                     Select One
                   </option>
                   <option value="In Stock">In Stock</option>
@@ -230,6 +237,7 @@ const AddCraftItem = () => {
                   name="artistName"
                   placeholder="Artist Name"
                   className="input input-bordered rounded-none text-sm"
+                  defaultValue={craft.artistName}
                   required
                 />
               </div>
@@ -245,6 +253,7 @@ const AddCraftItem = () => {
                   name="artistEmail"
                   placeholder="Artist Email"
                   className="input input-bordered rounded-none text-sm"
+                  defaultValue={craft.artistEmail}
                   required
                 />
               </div>
@@ -268,4 +277,4 @@ const AddCraftItem = () => {
   );
 };
 
-export default AddCraftItem;
+export default UpdateCraft;

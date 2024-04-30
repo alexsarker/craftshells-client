@@ -21,6 +21,7 @@ import WatercolourPainting from "./components/Categories/WatercolourPainting";
 import OilPainting from "./components/Categories/OilPainting";
 import CharcoalSketching from "./components/Categories/CharcoalSketching";
 import CartoonDrawing from "./components/Categories/CartoonDrawing";
+import UpdateCraft from "./components/UpdateCraft";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("blogData.json"),
+        loader: () => fetch("http://localhost:5000/blog"),
       },
       {
         path: "/login",
@@ -44,12 +45,11 @@ const router = createBrowserRouter([
       {
         path: "/item/:id",
         element: <BlogDetail />,
-        loader: () => fetch("blogData.json"),
+        loader: () => fetch("http://localhost:5000/blog"),
       },
       {
         path: "/privateArtist",
         element: <Artists />,
-        loader: () => fetch("artistData.json"),
       },
       {
         path: "/addItem",
@@ -80,6 +80,16 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: () => fetch("http://localhost:5000/craft"),
+      },
+      {
+        path: "/updateCraft/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateCraft />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/craft/${params.id}`),
       },
 
       // Categories ----------------------->

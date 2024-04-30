@@ -74,25 +74,25 @@ const Navbar = () => {
         <div className="hidden lg:block">
           <Link
             to="/"
-            className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-12"
+            className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-8"
           >
             Home
           </Link>
           <Link
             to="/allCraftItems"
-            className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-12"
+            className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-8"
           >
             All Craft Items
           </Link>
           <Link
             to="/addItem"
-            className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-12"
+            className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-8"
           >
             Add Craft Item
           </Link>
           <Link
             to="/myList"
-            className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-12"
+            className="link link-hover rounded-none text-base font-semibold text-[#6B7280] mr-8"
           >
             My List
           </Link>
