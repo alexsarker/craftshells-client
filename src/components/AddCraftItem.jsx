@@ -63,7 +63,7 @@ const AddCraftItem = () => {
           <div className="text-left pb-8">
             <h1 className="text-4xl font-medium pb-4">Add Craft Item</h1>
           </div>
-          <div className="card ">
+          <div className="card">
             <form onSubmit={handleAddCraft} className="grid grid-cols-2 gap-4">
               {/* Image URL */}
               <div className="form-control">
@@ -185,7 +185,7 @@ const AddCraftItem = () => {
                 </select>
               </div>
               {/* Processing Time */}
-              <div className="form-control">
+              <div className="form-control col-span-2">
                 <label className="label">
                   <span className="label-text font-medium text-base">
                     Processing Time
@@ -234,7 +234,7 @@ const AddCraftItem = () => {
                 />
               </div>
               {/* User Email */}
-              <div className="form-control">
+              <div className="form-control col-span-2">
                 <label className="label">
                   <span className="label-text font-medium text-base">
                     Artist Email

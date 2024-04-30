@@ -103,7 +103,7 @@ const Home = () => {
             Introducing our latest collection of Painting and Drawing.
           </p>
           <span>
-            <Link className="flex gap-4 items-center border px-6 py-2 hover:btn-ghost">
+            <Link to="/addItem" className="flex gap-4 items-center border px-6 py-2 hover:btn-ghost">
               PLACE YOUR ORDER <FaArrowRightLong className="text-xl" />
             </Link>
           </span>
@@ -133,7 +133,7 @@ const Home = () => {
               <h2 className="text-5xl font-bold">Landscape Painting</h2>
             </div>
           </div>
-          <div className="relative col-span-2">
+          <div className="relative lg:col-span-2">
             <img
               src="https://i.ibb.co/ZJNwvGL/photo-1549277513-f1b32fe1f8f5-q-80-w-2070-auto-format-fit-crop-ixlib-rb-4-0.jpg"
               alt="Card"
@@ -143,7 +143,7 @@ const Home = () => {
               <h2 className="text-5xl font-bold">Portrait Drawing</h2>
             </div>
           </div>
-          <div className="relative col-span-2">
+          <div className="relative lg:col-span-2">
             <img
               src="https://i.ibb.co/d4W2x5d/photo-1615733497128-d1c1ae42c243-q-80-w-2073-auto-format-fit-crop-ixlib-rb-4-0.jpg"
               alt="Card"
@@ -177,7 +177,7 @@ const Home = () => {
               </h2>
             </div>
           </div>
-          <div className="relative col-span-2">
+          <div className="relative lg:col-span-2">
             <img
               src="https://i.ibb.co/7RP1bFh/photo-1612036782180-6f0b6cd846fe-q-80-w-2070-auto-format-fit-crop-ixlib-rb-4-0.jpg"
               alt="Card"

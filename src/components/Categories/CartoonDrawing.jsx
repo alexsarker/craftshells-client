@@ -13,7 +13,7 @@ const CartoonDrawing = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
         {craftList.map((craft) => (
-          <div key={craft._id}>
+          <div key={craft._id} className="px-4 md:px-0 lg:px-0">
             {craft.subcategory === "Cartoon Drawing" && (
               <>
                 <img src={craft?.photoURL} className="h-96 w-full" />

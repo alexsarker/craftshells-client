@@ -190,7 +190,7 @@ const UpdateCraft = () => {
                 </select>
               </div>
               {/* Processing Time */}
-              <div className="form-control">
+              <div className="form-control col-span-2">
                 <label className="label">
                   <span className="label-text font-medium text-base">
                     Processing Time
@@ -242,7 +242,7 @@ const UpdateCraft = () => {
                 />
               </div>
               {/* User Email */}
-              <div className="form-control">
+              <div className="form-control col-span-2">
                 <label className="label">
                   <span className="label-text font-medium text-base">
                     Artist Email

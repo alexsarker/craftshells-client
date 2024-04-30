@@ -9,7 +9,7 @@ import {
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10 lg:p-20 back-main text-white md:gap-12 justify-evenly">
+      <footer className="footer p-10 lg:p-20 back-main text-white justify-evenly">
         <nav className="mx-auto lg:mx-0">
           <h6 className="text-3xl font-bold text-secondary pb-6 uppercase">
             Company Info
@@ -54,7 +54,7 @@ const Footer = () => {
           <h6 className="text-3xl font-bold pb-6 uppercase text-secondary">
             Socials
           </h6>
-          <div className="flex gap-4">
+          <div className="flex md:flex-wrap lg:flex-row gap-4">
             <a className="link link-hover text-3xl mx-auto md:mx-0 lg:mx-0">
               <FaFacebook />
             </a>

@@ -58,7 +58,7 @@ const MyList = () => {
         <hr className="w-48 mx-auto border-2 border-[#595D62]" />
 
         {/* customization button */}
-        <label className="form-control w-full">
+        <label className="form-control w-full px-4 lg:px-0">
           <div className="label">
             <span className="label-text">Sort by Customization</span>
           </div>
