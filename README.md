@@ -18,9 +18,6 @@ Features:
 6. Featured Artists: Users can follow their favorite artists and stay updated on their latest works and activities.
    
 
-   Selected Category: Painting and Drawing
-   
-
 Packages use for this website: 
 1. Lottie React
 2. React Tooltip
